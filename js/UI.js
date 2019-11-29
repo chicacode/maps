@@ -8,7 +8,7 @@ class UI {
 
     inicializarMapa() {
          // Inicializar y obtener la propiedad del mapa
-        const map = L.map('mapa').setView([41.3887901, 2.1589899], 6);
+        const map = L.map('mapa').setView([41.3887901, 2.1589899], 13);
         const enlaceMapa = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
             'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
