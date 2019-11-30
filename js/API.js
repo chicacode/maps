@@ -7,7 +7,7 @@ class API {
         const respuestaJSON = await datos.json();
 
         return {
-            respuestaJSON
+            respuestaJSON // devuelve esta variable para poder ser utilizada en otros componentes
         }
     }
 }
