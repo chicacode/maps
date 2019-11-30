@@ -43,7 +43,7 @@ class UI {
     console.log('Funcion mostarr pines');
         // recorrer los establecimientos
         result.forEach(result =>{
-            console.log("Los datos en el foreach estan", result);
+            //console.log("Los datos en el foreach estan", result);
             // Destructuring del JSON para extraer información
             // lati, longi, direccion, precio
             const { attributes: {latitud, longitud, dirección, precio_gasolina_95, precio_gasóleo_a} } = result;
@@ -62,5 +62,28 @@ class UI {
             this.markers.addLayer(marker);
         });
         this.markers.addTo(this.mapa); // Propiedad que contiene todos los markers se añaden a lo mapas
+    }
+
+    // buscador input
+    obtenerSugerencias(busqueda) {
+        this.api.obtenerDatos()
+            .then(datos => {
+                const resultados = datos.respuestaJSON.features;
+                console.log('En la funcion de obtener sugerencias los datos son', resultados )
+
+                // Enviar el JSON y la busqueda para el filtrado
+                this.filtrarSugerencias(resultados, busqueda);
+            })
+    }
+    // Filtra sugerencias en base a input
+    filtrarSugerencias(resultado, busqueda){
+        console.log("RESULTADOOOO", resultado);
+
+             // filtrar con .filter 
+        const filtros = resultado.filter(filtro => filtro.attributes.localidad.toLowerCase().indexOf(busqueda) !== -1); // .filter recorre los terminos y los encuentra segun la busqueda que desee encontrar y devuelve la que coincida, sino que el resultado sea -1
+        console.log("En la busqueds me daaaa", filtros);
+        // mostrar pines
+ 
+
     }
 }
