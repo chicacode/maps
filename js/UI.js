@@ -46,15 +46,21 @@ class UI {
             console.log("Los datos en el foreach estan", result);
             // Destructuring del JSON para extraer información
             // lati, longi, direccion, precio
-            const { attributes: {latitud, longitud, dirección, precio_gasolina_95, precio_gasóleo_a} }= result;
+            const { attributes: {latitud, longitud, dirección, precio_gasolina_95, precio_gasóleo_a} } = result;
 
+            // Crear un nuevo popup
+            const opcionesPopUp = L.popup() // Funcion de leaftlet
+                    .setContent(`<p>Dirección: ${dirección}</p>
+                                <p>Precio Regular: ${precio_gasóleo_a}</p>
+                                <p>Precio Premium: ${precio_gasolina_95}</p>
+                                `); 
             // Pintar pinnes
             const marker = new L.marker([
                 parseFloat(latitud), 
                 parseFloat(longitud)
-            ]);
+            ]).bindPopup(opcionesPopUp);
             this.markers.addLayer(marker);
         });
-        this.markers.addTo(this.mapa);
+        this.markers.addTo(this.mapa); // Propiedad que contiene todos los markers se añaden a lo mapas
     }
 }
