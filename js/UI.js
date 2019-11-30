@@ -83,7 +83,6 @@ class UI {
         const filtros = resultado.filter(filtro => filtro.attributes.localidad.toLowerCase().indexOf(busqueda) !== -1); // .filter recorre los terminos y los encuentra segun la busqueda que desee encontrar y devuelve la que coincida, sino que el resultado sea -1
         console.log("En la busqueds me daaaa", filtros);
         // mostrar pines
- 
 
     }
 }
