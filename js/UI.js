@@ -77,12 +77,11 @@ class UI {
     }
     // Filtra sugerencias en base a input
     filtrarSugerencias(resultado, busqueda){
-        console.log("RESULTADOOOO", resultado);
-
              // filtrar con .filter 
-        const filtros = resultado.filter(filtro => filtro.attributes.localidad.toLowerCase().indexOf(busqueda) !== -1); // .filter recorre los terminos y los encuentra segun la busqueda que desee encontrar y devuelve la que coincida, sino que el resultado sea -1
-        console.log("En la busqueds me daaaa", filtros);
+             // ITERA EN CADA UNO DE LOS REGISTROS y solo traer lo que se le defina sea == -1 o !== -1 para que concuerde
+        const filtros = resultado.filter(filtro => filtro.attributes.localidad.indexOf(busqueda) !== -1); // .filter recorre los terminos y los encuentra segun la busqueda que desee encontrar y devuelve la que coincida, sino que el resultado sea -1
         // mostrar pines
+        this.mostrarPines(filtros); 
 
     }
 }
