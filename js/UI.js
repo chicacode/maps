@@ -46,11 +46,12 @@ class UI {
             //console.log("Los datos en el foreach estan", result);
             // Destructuring del JSON para extraer información
             // lati, longi, direccion, precio
-            const { attributes: {latitud, longitud, dirección, precio_gasolina_95, precio_gasóleo_a} } = result;
+            const { attributes: {latitud, longitud, dirección, localidad, precio_gasolina_95, precio_gasóleo_a} } = result;
 
             // Crear un nuevo popup
             const opcionesPopUp = L.popup() // Funcion de leaftlet
                     .setContent(`<p>Dirección: ${dirección}</p>
+                                <p>Localidad: ${localidad}</p>
                                 <p>Precio Regular: ${precio_gasóleo_a}</p>
                                 <p>Precio Premium: ${precio_gasolina_95}</p>
                                 `); 
@@ -79,7 +80,7 @@ class UI {
     filtrarSugerencias(resultado, busqueda){
              // filtrar con .filter 
              // ITERA EN CADA UNO DE LOS REGISTROS y solo traer lo que se le defina sea == -1 o !== -1 para que concuerde
-        const filtros = resultado.filter(filtro => filtro.attributes.localidad.indexOf(busqueda) !== -1); // .filter recorre los terminos y los encuentra segun la busqueda que desee encontrar y devuelve la que coincida, sino que el resultado sea -1
+        const filtros = resultado.filter(filtro => filtro.attributes.localidad.toLowerCase().indexOf(busqueda) !== -1); // .filter recorre los terminos y los encuentra segun la busqueda que desee encontrar y devuelve la que coincida, sino que el resultado sea -1
         // mostrar pines
         this.mostrarPines(filtros); 
 
